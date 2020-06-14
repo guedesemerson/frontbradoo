@@ -31,13 +31,13 @@ Your application will be running at `http://127.0.0.1:8000`.
 
 
 <h1 align="center">
-<img src="static/img/imagem1.png" alt="imagem1" width="300" height=550></img>
-<img src="static/img/imagem2.png" alt="imagem2" width="300" height=550></img>
+<img src="static/img/number1.png" alt="imagem1" width="300" height=550></img>
+<img src="static/img/number2.png" alt="imagem2" width="300" height=550></img>
 </h1>
 
 
 <h1 align="center">
-<img src="static/img/imagem3.png" alt="imagem3" width="300" height=550></img>
+<img src="static/img/number3.png" alt="imagem3" width="300" height=550></img>
 </h1>
 
 
