@@ -1,0 +1,39 @@
+{%extends 'vendor/base.html'%}
+{%load static%}
+{% load bootstrap %}
+
+{%block menu%}
+<nav class="navbar navbar-dark bg-dark">
+
+    <a href="{%url 'vendors'%}"><img src="{% static 'img/logo.png'%}" class="navbar-brand brand" style="margin: 0; float: none; text-align:center height=30 "></a>
+    <div>
+        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Vendor Name..." class="text-light bg-dark rounded">
+    </div>
+</nav>
+
+{%endblock%}
+{%block main%}
+
+<div class="container">
+
+    <div class="row">
+        <div class="col">
+            <form action= "{%url 'updatevendor' vendorid%}" method ="POST">
+                 <h2 align="center"><span class="badge badge-dark ">Update Vendor</span></h2>
+                {%csrf_token%}
+                {{form|bootstrap}}
+                <button type="submit" class="btn btn-dark">Submit</button>
+            </form>
+        </div>
+    </div>
+
+</div>
+{%endblock%}
+
+
+
+
+
+
+
+

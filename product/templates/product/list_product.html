@@ -1,0 +1,69 @@
+{%extends 'core/base.html'%}
+{%load static%}
+{% load bootstrap %}
+
+{%block menu%}
+<nav class="navbar navbar-dark bg-dark">
+    <a href="{%url 'vendors'%}"><img src="{% static 'img/logo.png'%}" class="navbar-brand brand" style="margin: 0; float: none; text-align:center height=30 "></a>
+    <div>
+        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Product Name..." class="text-light bg-dark rounded">
+    </div>
+</nav>
+
+{%endblock%}
+{%block main%}
+
+
+<br>
+<div class="row">
+    <div class="col">
+        <form action= "{%url 'newproduct' vendorid %}" method ="POST">
+             <h2 align="center"><span class="badge badge-dark ">New Product</span></h2>
+            {%csrf_token%}
+            {{form|bootstrap}}
+            <button type="submit" class="btn btn-dark">Submit</button>
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col overflow-auto">
+        <h2 align="center"><span class="badge badge-dark ">Product List</span></h2>
+        <table class="table rounded anyClass" id="myTable" >
+            <thead class="thead-dark rounded">
+            <tr>
+              <th scope="col">Nº</th>
+              <th scope="col">Name</th>
+              <th scope="col">Code</th>
+              <th scope="col">Price</th>
+              <th scope="col">Delete</th>
+              <th scope="col">Edit</th>
+            </tr>
+            </thead>
+            <tbody>
+                {%for product in product%}
+                <tr>
+                  <th scope="row">{{product.id}}</th>
+                  <td>{{product.name}}</td>
+                  <td>{{product.code}}</td>
+                  <td>{{product.price}}</td>
+                  <td>
+                      <a class="btn btn-outline-dark" href="{%url 'deleteproduct' product.id%}">
+                          <i class="fas fa-trash"></i>
+                      </a>
+                  </td>
+                  <td>
+                      <a class="btn btn-outline-dark" href="{%url 'formupdateproduct' product.id%}">
+                          <i class="fas fa-edit"></i>
+                      </a>
+                  </td>
+                </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+{%endblock%}

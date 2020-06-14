@@ -1,0 +1,73 @@
+{%extends 'product/base.html'%}
+{%load static%}
+{% load bootstrap %}
+
+{%block menu%}
+<nav class="navbar navbar-dark bg-dark">
+    <a href="{%url 'vendors'%}"><img src="{% static 'img/logo.png'%}" class="navbar-brand brand" style="margin: 0; float: none; text-align:center height=30 "></a>
+    <div>
+        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Vendor Name..." class="text-light bg-dark rounded">
+    </div>
+</nav>
+
+{%endblock%}
+{%block main%}
+
+
+<br>
+<div class="row">
+    <div class="col overflow-auto">
+        <h2 align="center"><span class="badge badge-dark ">Vendor List</span></h2>
+        <table class="table rounded anyClass" id="myTable" >
+            <thead class="thead-dark rounded">
+            <tr>
+              <th scope="col">Nº</th>
+              <th scope="col">Name</th>
+              <th scope="col">Cnpj</th>
+              <th scope="col">City</th>
+              <th scope="col">Products</th>
+              <th scope="col">Delete</th>
+              <th scope="col">Edit</th>
+              <th scope="col">New</th>
+            </tr>
+            </thead>
+            <tbody>
+                {%for vendor in vendor%}
+                <tr>
+                  <th scope="row">{{vendor.id}}</th>
+                  <td>{{vendor.name}}</td>
+                  <td>{{vendor.cnpj}}</td>
+                  <td>{{vendor.city}}</td>
+                  <td>
+                      <a class="btn btn-outline-dark" href="{%url 'products' vendor.id%}">
+                          <i class="fab fa-product-hunt"></i>
+                      </a>
+                  </td>
+                  <td>
+                      <a class="btn btn-outline-dark" href="{%url 'deletevendor' vendor.id%}">
+                          <i class="fas fa-trash"></i>
+                      </a>
+                  </td>
+                  <td>
+                      <a class="btn btn-outline-dark" href="{%url 'formupdate' vendor.id %}">
+                          <i class="fas fa-user-edit"></i>
+                      </a>
+                  </td>
+                  <td>
+                      <a class="btn btn-outline-dark" href="{%url 'formvendor'%}">
+                          <i class="fas fa-user-alt"></i>
+                      </a>
+                  </td>
+                </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+    </div>
+</div>
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+  </ul>
+</nav>
+{%endblock%}
